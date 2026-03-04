@@ -9,7 +9,7 @@ show_session_centre() {
 
   local show_left_sep="#[fg=$color,bg=$thm_bg,nobold,nounderscore,noitalics]${left_sep}"
   local show_icon="#[fg=$thm_bg,bg=$color,nobold,nounderscore,noitalics]${icon} "
-  local show_text="#[fg=$thm_bg,bg=$color]${text}"
+  local show_text="#[fg=$thm_bg,bg=$color]${text} "
   local show_right_sep="#[fg=$color,bg=$thm_bg,nobold,nounderscore,noitalics]${right_sep}"
 
   echo "$show_left_sep$show_icon$show_text$show_right_sep"
