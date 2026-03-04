@@ -318,7 +318,11 @@ main() {
   local status_modules_left=$(get_tmux_option "@catppuccin_status_modules_left" "")
   local loaded_modules_left=$( load_modules "$status_modules_left")
 
-  set status-left "$loaded_modules_left"
+  local status_modules_centre=$(get_tmux_option "@catppuccin_status_modules_centre" "")
+  local loaded_modules_centre=$( load_modules "$status_modules_centre")
+
+  set status-justify "centre"
+  set status-left "$loaded_modules_centre"
   set status-right "$loaded_modules_right"
 
   # --------=== Modes
