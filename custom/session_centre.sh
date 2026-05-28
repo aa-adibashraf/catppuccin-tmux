@@ -4,8 +4,8 @@ show_session_centre() {
   local color=$(get_tmux_option "@catppuccin_session_centre_color" "#{?client_prefix,$thm_red,$thm_orange}")
   local text=$(get_tmux_option "@catppuccin_session_centre_text" "#S")
 
-  local left_sep="◢"
-  local right_sep="◤"
+  local left_sep=$(get_tmux_option "@catppuccin_session_centre_left_sep" "◢")
+  local right_sep=$(get_tmux_option "@catppuccin_session_centre_right_sep" "◤")
 
   local show_left_sep="#[fg=$color,bg=$thm_bg,nobold,nounderscore,noitalics]${left_sep}"
   local show_icon="#[fg=$thm_bg,bg=$color,nobold,nounderscore,noitalics]${icon} "
