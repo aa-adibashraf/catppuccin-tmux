@@ -66,6 +66,7 @@ build_window_format() {
   local background=$3
   local text=$4
   local fill=$5
+  local text_attributes=$6
 
   if [ "$window_status_enable" = "yes" ]
   then
@@ -78,7 +79,7 @@ build_window_format() {
     local show_left_separator="#[fg=$thm_gray,bg=$thm_bg,nobold,nounderscore,noitalics]$window_left_separator"
     local show_number="#[fg=$thm_fg,bg=$thm_gray]$number"
     local show_middle_separator="#[fg=$thm_fg,bg=$thm_gray,nobold,nounderscore,noitalics]$window_middle_separator"
-    local show_text="#[fg=$thm_fg,bg=$thm_gray]$text"
+    local show_text="#[fg=$thm_fg,bg=$thm_gray${text_attributes:+,}${text_attributes}]$text"
     local show_right_separator="#[fg=$thm_gray,bg=$thm_bg]$window_right_separator"
 
   fi
@@ -88,7 +89,7 @@ build_window_format() {
     local show_left_separator="#[fg=$color,bg=$thm_bg,nobold,nounderscore,noitalics]$window_left_separator"
     local show_number="#[fg=$background,bg=$color]$number"
     local show_middle_separator="#[fg=$background,bg=$color,nobold,nounderscore,noitalics]$window_middle_separator"
-    local show_text="#[fg=$background,bg=$color]$text"
+    local show_text="#[fg=$background,bg=$color${text_attributes:+,}${text_attributes}]$text"
     local show_right_separator="#[fg=$color,bg=$thm_bg]$window_right_separator"
 
   fi
@@ -97,7 +98,7 @@ build_window_format() {
   then
     local show_number="#[fg=$background,bg=$color]$number"
     local show_middle_separator="#[fg=$color,bg=$background,nobold,nounderscore,noitalics]$window_middle_separator"
-    local show_text="#[fg=$thm_fg,bg=$background]$text"
+    local show_text="#[fg=$thm_fg,bg=$background${text_attributes:+,}${text_attributes}]$text"
 
     if [ "$window_number_position" = "right" ]
     then
@@ -133,13 +134,14 @@ build_status_module() {
   local icon=$2
   local color=$3
   local text=$4
+  local text_attributes=$5
 
   if [ "$status_fill" = "icon" ]
   then
     local show_left_separator="#[fg=$color,bg=$thm_gray,nobold,nounderscore,noitalics]$status_left_separator"
 
     local show_icon="#[fg=$thm_bg,bg=$color,nobold,nounderscore,noitalics]$icon "
-    local show_text="#[fg=$thm_fg,bg=$thm_gray] $text"
+    local show_text="#[fg=$thm_fg,bg=$thm_gray${text_attributes:+,}${text_attributes}] $text"
 
     local show_right_separator="#[fg=$thm_gray,bg=$thm_bg,nobold,nounderscore,noitalics]$status_right_separator"
 
@@ -160,7 +162,7 @@ build_status_module() {
     local show_left_separator="#[fg=$color,bg=$thm_gray,nobold,nounderscore,noitalics]$status_left_separator"
 
     local show_icon="#[fg=$thm_bg,bg=$color,nobold,nounderscore,noitalics]$icon "
-    local show_text="#[fg=$thm_bg,bg=$color]$text"
+    local show_text="#[fg=$thm_bg,bg=$color${text_attributes:+,}${text_attributes}]$text"
 
     local show_right_separator="#[fg=$color,bg=$thm_gray,nobold,nounderscore,noitalics]$status_right_separator"
 
